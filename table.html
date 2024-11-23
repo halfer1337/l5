@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Таблица студентов</title>
+    <link rel="stylesheet" href="table.css">
+</head>
+<body>
+    <h1>Таблица студентов</h1>
+    
+    <div class="header">
+        <a href="site.html">Основная страница</a>
+        <a href="page2.html">Позиционирование элементов</a>
+        <a href="table.html">Таблица</a>
+    </div>
+
+    <table class="table">
+        <caption>Список студентов</caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ФИО</th>
+                <th>Номер зачётной книжки</th>
+                <th>Номер группы</th>
+                <th>Пол</th>
+                <th>Возраст</th>
+                <th>Форма поступления</th>
+                <th>Направление</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Александр Невский</td>
+                <td>1337</td>
+                <td>6207-090301D</td>
+                <td>Мужской</td>
+                <td>772</td>
+                <td>Очная</td>
+                <td>ИВТ</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Иван Грозный</td>
+                <td>1488</td>
+                <td>6207-090301D</td>
+                <td>Мужской</td>
+                <td>494</td>
+                <td>Очная</td>
+                <td>ИВТ</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>София Захарченко</td>
+                <td>4242</td>
+                <td>6207-090301D</td>
+                <td>Женский</td>
+                <td>20</td>
+                <td>Очная</td>
+                <td>ИВТ</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Василий Мирошниченко</td>
+                <td>8228</td>
+                <td>6207-090301D</td>
+                <td>Мужской</td>
+                <td>20</td>
+                <td>Очная</td>
+                <td>ИВТ</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Ка-52</td>
+                <td>2022</td>
+                <td>6207-090301D</td>
+                <td>Attack helicopter</td>
+                <td>13</td>
+                <td>Очная</td>
+                <td>ИВТ</td>
+            </tr>
+        </tbody>
+    </table>
+    <form id="form" onsubmit="event.preventDefault(); addStudent();">
+
+        <table  class="newStudent">
+
+            <caption class="data">Ввод данных</caption>
+            <tr>
+                <th><label for="1">ID#:</label><br></th>
+                <td><input type="number" id="id" required><br></td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="2">ФИО:</label><br>
+                </th>
+                <td><input type="text" id="name" required><br></td>
+            </tr>
+
+            <tr>
+                <th><label for="3">Номер зачётной книжки:</label><br></th>
+                <td><input type="text" id="bookNumber" required><br></td>
+            </tr>
+            <tr>
+                <th><label for="4">Номер группы:</label><br></th>
+                <td><input type="text" id="groupNumber" required><br></td>
+            </tr>
+            <tr>
+                <th><label for="5">Пол:</label><br></th>
+                <td><input type="text" id="sex" required><br></td>
+            </tr>
+            <tr>
+                <th><label for="6">Возраст:</label><br></th>
+                <td><input type="number" id="age" required><br></td>
+            </tr>
+            <tr>
+                <th><label for="7">Форма поступления:</label><br></th>
+                <td><input type="text" id="admissionForm" required><br></td>
+            </tr>
+            <tr>
+                <th><label for="8">Направление:</label><br></th>
+                <td><input type="text" id="direction" required><br></td>
+            </tr>
+        </table>
+        <button type="submit">Добавить</button>
+    </form>
+    <script>
+        function addStudent() {
+            const table = document.querySelector("table tbody");
+            const newRow = document.createElement("tr");
+
+            const fields = ["id", "name", "bookNumber", "groupNumber", "sex", "age", "admissionForm", "direction"];
+            fields.forEach(field => {
+                const td = document.createElement("td");
+                td.textContent = document.getElementById(field).value;
+                newRow.appendChild(td);
+            });
+
+            table.appendChild(newRow);
+
+            document.getElementById("form").reset();
+        }
+    </script>
+</body>
+</html>
